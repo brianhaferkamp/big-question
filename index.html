@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>A Pen by  Brian Haferkamp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  
+<header id="masthead"><a class="about-trigger" href="#"><i class="zmdi zmdi-help-outline"></i></a></header>
+<nav class="about-nav"><a class="nav-close" href="#"><i class="zmdi zmdi-close"></i></a>
+  <div class="about-nav-inner">
+    <header>
+      <h3>About</h3>
+    </header>
+    <section>
+      <p>The Big Question gives you a way to let your thoughts be known about the biggest questions of our time. We don't track you or your answers. No answer is attached to an IP address, URL, or email address. Each answer is anonymously stored in a database file with a random key name. This allows you to freely answer the question without it following you around or haunting you for the rest of your life. The whole point of this project is the free, anonymous exchange of ideas.</p>
+      <p>It's possible that this experiment could go horribly wrong. Here are some community rules that will help us all be honest, get interesting answers, and avoid having to shut down this experiment.</p>
+      <p> <b>Community Rules</b></p>
+      <ul>
+        <li>Keep cursing to a minimum. Use those words for emphasis, not as adjectives.</li>
+        <li>Communicate your answer as clearly as you can without demeaning others. This is about you and your thoughts, not them.</li>
+        <li>Answer honestly. No one's tracking you so be honest with your answers.</li>
+        <li>Don't respond to the answers left by others. It's not a conversation or comment section. Write your answer so that it stands on its own.</li>
+        <li>Don't promote your agenda. It doesn't add to the answers and it's annoying.</li>
+        <li>Don't call people out by name. Make this about you and your thoughts, not others. </li>
+      </ul>
+    </section>
+  </div>
+</nav>
+<main>
+  <header><small class="current-date-container"></small>
+    <h1 class="question">What right have you to be merry? What reason have you to be merry?</h1>
+  </header>
+  <aside class="answer-toggle">
+    <button class="button">Share your answer</button>
+  </aside>
+  <aside class="answer-box hide">
+    <form class="answer-submit" action="/">
+      <textarea class="user-input" rows="15" name="answer"></textarea>
+      <input class="button submit-button" type="submit" value="SUBMIT"/>
+    </form>
+  </aside>
+  <section class="answers">
+    <header class="answers-header">
+      <h2>Community answers</h2>
+    </header>
+    <div class="answers-output"></div>
+  </section>
+</main>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
