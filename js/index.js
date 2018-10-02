@@ -1,3 +1,7 @@
+//---------------------------------------------------------
+// cache the DOM
+//---------------------------------------------------------
+
 var answerToggle = $('.answer-toggle button');
 var confirmation = $('.confirmation');
 var answerBox = $('.answer-box');
@@ -9,9 +13,20 @@ var database;
 var ref;
 
 
+//---------------------------------------------------------
+// answer toggle
+//---------------------------------------------------------
+
 answerToggle.on('click', function() {
   answerBox.toggleClass('hide');
 });
+
+
+
+
+//---------------------------------------------------------
+// about nav
+//---------------------------------------------------------
 
 $('.about-trigger').on('click', function () {
   $('.about-nav').addClass('nav-slide');
@@ -22,33 +37,43 @@ $('.nav-close').on('click', function () {
 });
 
 
-// Get the current date
+//---------------------------------------------------------
+// to top button
+//---------------------------------------------------------
 
-// var fullDate = new Date();console.log(fullDate);
-// var twoDigitMonth = fullDate.getMonth()+"";if(twoDigitMonth.length==1)	twoDigitMonth="0" +twoDigitMonth;
-// var twoDigitDate = fullDate.getDate()+"";if(twoDigitDate.length==1)	twoDigitDate="0" +twoDigitDate;
-// var currentDate = twoDigitDate + "/" + twoDigitMonth + "/" + fullDate.getFullYear();console.log(currentDate);
-// // output date to container above question
-// date.text(currentDate);
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 100) {
+    $('.to-top').removeClass('hide');
+  } else {
+    $('.to-top').addClass('hide');
+  }
+});
 
 
+//---------------------------------------------------------
 // Initialize Firebase
-  // TODO: Replace with your project's customized code snippet
-  var config = {
-    apiKey: "AIzaSyBF5EHOFZ2ks3WpAijseYZ39IsjkixXez8",
-    authDomain: "the-big-questions.firebaseapp.com",
-    databaseURL: "https://the-big-questions.firebaseio.com",
-    projectId: "the-big-questions",
-    storageBucket: "the-big-questions.appspot.com",
-    messagingSenderId: "1061812161082"
-  };
+//---------------------------------------------------------
 
-  firebase.initializeApp(config);
+// TODO: Replace with your project's customized code snippet
+var config = {
+  apiKey: "AIzaSyBF5EHOFZ2ks3WpAijseYZ39IsjkixXez8",
+  authDomain: "the-big-questions.firebaseapp.com",
+  databaseURL: "https://the-big-questions.firebaseio.com",
+  projectId: "the-big-questions",
+  storageBucket: "the-big-questions.appspot.com",
+  messagingSenderId: "1061812161082"
+};
+
+firebase.initializeApp(config);
+
+
+//---------------------------------------------------------
+// Save data to db on answer submission
+//---------------------------------------------------------
 
 database = firebase.database();
 ref = database.ref('answers');
 
-// Save data to db
 answerSubmit.on('submit', function(e) {
   e.preventDefault();
   var data = {
@@ -59,37 +84,45 @@ answerSubmit.on('submit', function(e) {
   answerBox.addClass('hide');
   
   answerToggle.addClass('hide');
-  confirmation.removeClass('hide');  
+  confirmation.removeClass('hide');
+  $('.confirmation-close').on('click', function() {
+    confirmation.fadeOut();
+  });
   
   $('.answers-output').html('');
   ref.on('value', getData);
 });
 
-$('.confirmation-close').on('click', function() {
-  confirmation.fadeOut();
-});
 
-
+//---------------------------------------------------------
 // get data from firebase
+//---------------------------------------------------------
+
 ref.on('value', getData);
 
 function getData(data) {
   var answersOutput = $('.answers-output');
-  // console.log(data.val());
   var answers = data.val();
-  // var keys = Object.keys(answers);
-  // console.log(answers);
-  // answersOutput.html('<p class="loader"><i class="zmdi zmdi-spinner zmdi-hc-spin loading-icon"></i></p>');
+  
   $.each(answers, function(i, val) {
     var answer = val;
     var userAnswer = answer.answer;    
-    
-    answersOutput.prepend('<article><p class="answer">'+userAnswer+'</p></article>');
-       
+    answersOutput.prepend('<article><p class="answer">'+userAnswer+'</p></article>');       
   });
+  
   var numberOfAnswers = answersOutput.find('article').length;
-  console.log(numberOfAnswers);
-  $('.answers-header h2').text('Community answers (' + numberOfAnswers + ')');
-  
-  
+  // console.log(numberOfAnswers);
+  var answerToggle = $('.answer-toggle button');
+  if (numberOfAnswers == 0) {
+    answerToggle.text('Be the first to answer');
+  }
+  $('.answers-header h2').text('Community answers (' + numberOfAnswers + ')');  
 }
+
+
+// Google Analytics
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-126803862-1');
