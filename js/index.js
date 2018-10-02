@@ -112,6 +112,8 @@ function getData(data) {
   var answerToggle = $('.answer-toggle button');
   if (numberOfAnswers == 0) {
     answerToggle.text('Be the first to answer');
+  } else {
+    answerToggle.text('Share your answer');
   }
   $('.answers-header h2').text('Community answers (' + numberOfAnswers + ')');  
 }
