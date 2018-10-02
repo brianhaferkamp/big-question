@@ -48,8 +48,7 @@ database = firebase.database();
 ref = database.ref('answers');
 
 // Save data to db
-answerSubmit.on('submit', function(e) {
-  e.preventDefault();
+answerSubmit.on('submit', function() {
   var data = {
     answer: userInput.val()
   }
