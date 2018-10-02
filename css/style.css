@@ -4,10 +4,6 @@ input {
   font-family: "Open Sans", sans-serif;
 }
 
-.hide {
-  display: none;
-}
-
 h1 {
   font-size: 2rem;
   margin-bottom: 3rem;
@@ -151,4 +147,21 @@ main {
 }
 .confirmation-close:hover {
   cursor: pointer;
+}
+
+.to-top {
+  margin: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem;
+  display: inline-block;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+}
+
+.hide {
+  display: none;
 }
