@@ -25,8 +25,10 @@
 <body>
 
   
+<!-- About Link-->
 <header id="masthead"><a class="about-trigger" href="#"><i class="zmdi zmdi-help-outline"></i></a></header>
-<nav class="about-nav"><a class="nav-close" href="#"><i class="zmdi zmdi-close"></i></a>
+<!-- Slide In Nav-->
+<aside class="about-nav"><a class="nav-close" href="#"><i class="zmdi zmdi-close"></i></a>
   <div class="about-nav-inner">
     <header>
       <h3>About</h3>
@@ -45,29 +47,34 @@
       </ul>
     </section>
   </div>
-</nav>
+</aside>
 <main>
+  <!-- Question-->
   <header><small class="current-date-container"></small>
     <h1 class="question">How would you fix the public education system?</h1>
   </header>
-  <aside class="answer-toggle">
+  <!-- Answer Toggle-->
+  <section class="answer-toggle">
     <button class="button">Share your answer</button>
     <div class="confirmation hide">
       <p class="confirmation-close"><i class="zmdi zmdi-close"></i></p>
       <p>Thank you for answering this big question! Read through what others have written below and please share this website with your community!</p>
     </div>
-  </aside>
-  <aside class="answer-box hide">
+  </section>
+  <!-- User Input-->
+  <section class="answer-box hide">
     <textarea class="user-input" rows="15" name="answer"></textarea>
     <input class="button submit-button" type="submit" value="SUBMIT"/>
-  </aside>
+  </section>
+  <!-- Answers-->
   <section class="answers">
     <header class="answers-header">
       <h2>Community answers</h2>
     </header>
     <div class="answers-output"></div>
   </section>
-</main><a class="to-top hide" href="#top"><i class="zmdi zmdi-chevron-up zmdi-hc-fw"></i></a>
+</main>
+<!-- To Top Link--><a class="to-top hide" href="#top"><i class="zmdi zmdi-chevron-up zmdi-hc-fw"></i></a>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 
   
