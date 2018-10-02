@@ -1,4 +1,5 @@
 var answerToggle = $('.answer-toggle button');
+var confirmation = $('.confirmation');
 var answerBox = $('.answer-box');
 var answerSubmit = $('.answer-submit');
 var answersOutput = $('.answers-output');
@@ -48,14 +49,26 @@ database = firebase.database();
 ref = database.ref('answers');
 
 // Save data to db
-answerSubmit.on('submit', function() {
+answerSubmit.on('submit', function(e) {
+  e.preventDefault();
   var data = {
     answer: userInput.val()
   }
   ref.push(data);  
   userInput.val('');
   answerBox.addClass('hide');
+  
+  answerToggle.addClass('hide');
+  confirmation.removeClass('hide');  
+  
+  $('.answers-output').html('');
+  ref.on('value', getData);
 });
+
+$('.confirmation-close').on('click', function() {
+  confirmation.fadeOut();
+});
+
 
 // get data from firebase
 ref.on('value', getData);
@@ -66,18 +79,17 @@ function getData(data) {
   var answers = data.val();
   // var keys = Object.keys(answers);
   // console.log(answers);
+  // answersOutput.html('<p class="loader"><i class="zmdi zmdi-spinner zmdi-hc-spin loading-icon"></i></p>');
   $.each(answers, function(i, val) {
     var answer = val;
-    var userAnswer = answer.answer;
+    var userAnswer = answer.answer;    
     
     answersOutput.prepend('<article><p class="answer">'+userAnswer+'</p></article>');
-    
-    var numberOfAnswers = answersOutput.find('article').length;
+       
+  });
+  var numberOfAnswers = answersOutput.find('article').length;
   console.log(numberOfAnswers);
   $('.answers-header h2').text('Community answers (' + numberOfAnswers + ')');
-    
-  });
-  
   
   
 }
