@@ -22,8 +22,6 @@ answerToggle.on('click', function() {
 });
 
 
-
-
 //---------------------------------------------------------
 // about nav
 //---------------------------------------------------------
@@ -74,8 +72,7 @@ firebase.initializeApp(config);
 database = firebase.database();
 ref = database.ref('answers');
 
-answerSubmit.on('submit', function(e) {
-  e.preventDefault();
+submitButton.on('click', function() {
   var data = {
     answer: userInput.val()
   }
